@@ -24,12 +24,12 @@ public class StatusController {
 	private final FindStatusUseCase findStatus;
 
 	@GetMapping("/{statusId}")
-	public ResponseEntity<List<Status>> getStatus(@PathVariable("statusId") Long statusId) throws Exception {
+	public ResponseEntity<List<Status>> getStatus(@PathVariable("statusId") Long statusId) {
 		return new ResponseEntity<>(findStatus.find(statusId), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Status>> getStatuses() throws Exception {
+	public ResponseEntity<List<Status>> getStatuses() {
 		return new ResponseEntity<>(findStatus.find(null), HttpStatus.OK);
 	}
 }

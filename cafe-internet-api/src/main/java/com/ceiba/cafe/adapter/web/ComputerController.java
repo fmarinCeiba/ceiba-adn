@@ -34,27 +34,27 @@ public class ComputerController {
 	private final DeleteComputerUseCase delComputer;
 
 	@PutMapping
-	public ResponseEntity<Long> create(@RequestBody ComputerCommand computer) throws Exception {
+	public ResponseEntity<Long> create(@RequestBody ComputerCommand computer) {
 		return new ResponseEntity<>(newComputer.create(computer), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{computerId}")
-	public ResponseEntity<List<Computer>> getComputer(@PathVariable("computerId") Long computerId) throws Exception {
+	public ResponseEntity<List<Computer>> getComputer(@PathVariable("computerId") Long computerId) {
 		return new ResponseEntity<>(fndComputer.find(computerId), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Computer>> getComputers() throws Exception {
+	public ResponseEntity<List<Computer>> getComputers() {
 		return new ResponseEntity<>(fndComputer.find(null), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody ComputerCommand computer) throws Exception {
+	public ResponseEntity<Boolean> update(@RequestBody ComputerCommand computer) {
 		return new ResponseEntity<>(updComputer.update(computer), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{computerId}")
-	public ResponseEntity<Boolean> delete(@PathVariable("computerId") Long computerId) throws Exception {
+	public ResponseEntity<Boolean> delete(@PathVariable("computerId") Long computerId) {
 		return new ResponseEntity<>(delComputer.delete(computerId), HttpStatus.OK);
 	}
 

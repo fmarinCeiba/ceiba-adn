@@ -33,34 +33,34 @@ public class RentController {
 	private final CalculateRentUseCase calRent;
 
 	@PutMapping
-	public ResponseEntity<Long> create(@RequestBody RentCommand rent) throws Exception {
+	public ResponseEntity<Long> create(@RequestBody RentCommand rent) {
 		return new ResponseEntity<>(newRent.create(rent), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{rentId}")
-	public ResponseEntity<List<Rent>> getRent(@PathVariable("rentId") Long rentId) throws Exception {
+	public ResponseEntity<List<Rent>> getRent(@PathVariable("rentId") Long rentId) {
 		return new ResponseEntity<>(fndRent.find(rentId), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Rent>> getRents() throws Exception {
+	public ResponseEntity<List<Rent>> getRents() {
 		return new ResponseEntity<>(fndRent.find(null), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody RentCommand rent) throws Exception {
+	public ResponseEntity<Boolean> update(@RequestBody RentCommand rent) {
 		return new ResponseEntity<>(updRent.update(rent), HttpStatus.OK);
 	}
 
 	@GetMapping("/time/{computerId}/{amount}")
 	public ResponseEntity<Long> getTime(@PathVariable("computerId") Long computerId,
-			@PathVariable("amount") Long amount) throws Exception {
+			@PathVariable("amount") Long amount) {
 		return new ResponseEntity<>(calRent.time(computerId, amount), HttpStatus.OK);
 	}
 
 	@GetMapping("/amount/{computerId}/{time}")
-	public ResponseEntity<Long> getAmount(@PathVariable("computerId") Long computerId, @PathVariable("time") Long time)
-			throws Exception {
+	public ResponseEntity<Long> getAmount(@PathVariable("computerId") Long computerId,
+			@PathVariable("time") Long time) {
 		return new ResponseEntity<>(calRent.amount(computerId, time), HttpStatus.OK);
 	}
 }

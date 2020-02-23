@@ -34,27 +34,27 @@ public class CategoryController {
 	private final DeleteCategoryUseCase delCategory;
 
 	@PutMapping
-	public ResponseEntity<Long> create(@RequestBody CategoryCommand category) throws Exception {
+	public ResponseEntity<Long> create(@RequestBody CategoryCommand category) {
 		return new ResponseEntity<>(newCategory.create(category), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{categoryId}")
-	public ResponseEntity<List<Category>> getCategory(@PathVariable("categoryId") Long categoryId) throws Exception {
+	public ResponseEntity<List<Category>> getCategory(@PathVariable("categoryId") Long categoryId) {
 		return new ResponseEntity<>(fndCategory.find(categoryId), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Category>> getCategories() throws Exception {
+	public ResponseEntity<List<Category>> getCategories() {
 		return new ResponseEntity<>(fndCategory.find(null), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody CategoryCommand category) throws Exception {
+	public ResponseEntity<Boolean> update(@RequestBody CategoryCommand category) {
 		return new ResponseEntity<>(updCategory.update(category), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{categoryId}")
-	public ResponseEntity<Boolean> delete(@PathVariable("categoryId") Long categoryId) throws Exception {
+	public ResponseEntity<Boolean> delete(@PathVariable("categoryId") Long categoryId) {
 		return new ResponseEntity<>(delCategory.delete(categoryId), HttpStatus.OK);
 	}
 }
