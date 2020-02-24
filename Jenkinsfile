@@ -52,7 +52,7 @@ pipeline {
 		stage('Jacoco Reports') {
 			steps {
 				echo "------------>Jacoco Reports<------------"
-				sh 'gradle jacocoTestReport'
+				sh 'gradle --b ./cafe-internet-api/build.gradle jacocoTestReport'
 			}
 		}
 		stage('Integration Tests') {
