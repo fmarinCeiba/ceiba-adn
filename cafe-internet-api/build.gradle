@@ -3,7 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
-
+apply plugin: 'jacoco'
 group = 'com.ceiba'
 version = '0.0.1'
 sourceCompatibility = '1.8'
@@ -35,6 +35,11 @@ dependencies {
     testImplementation 'com.tngtech.archunit:archunit:0.9.3'
     testImplementation 'org.junit.platform:junit-platform-launcher:1.4.2'
     testImplementation 'com.h2database:h2'
+    jacocoTestReport {
+		reports {
+			xml.enabled true
+		}
+	}
 }
 
 test {

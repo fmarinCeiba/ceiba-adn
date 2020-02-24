@@ -49,7 +49,12 @@ pipeline {
 				sh 'gradle --b ./cafe-internet-api/build.gradle test'
 			}
 		}
-		
+		stage('Jacoco Reports') {
+			steps {
+				echo "------------>Jacoco Reports<------------"
+				sh 'gradle jacocoTestReport'
+			}
+		}
 		stage('Integration Tests') {
 			steps {
 				echo "------------>Integration Tests<------------"
