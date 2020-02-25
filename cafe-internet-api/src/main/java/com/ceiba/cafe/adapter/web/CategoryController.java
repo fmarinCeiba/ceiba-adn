@@ -2,6 +2,8 @@ package com.ceiba.cafe.adapter.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,7 +53,7 @@ public class CategoryController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody CategoryCommand category) {
+	public ResponseEntity<Boolean> update(@Valid @RequestBody CategoryCommand category) {
 		return new ResponseEntity<>(updCategory.update(category), HttpStatus.OK);
 	}
 

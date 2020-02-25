@@ -2,6 +2,8 @@ package com.ceiba.cafe.adapter.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,7 +53,7 @@ public class ComputerController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody ComputerCommand computer) {
+	public ResponseEntity<Boolean> update(@Valid @RequestBody ComputerCommand computer) {
 		return new ResponseEntity<>(updComputer.update(computer), HttpStatus.OK);
 	}
 

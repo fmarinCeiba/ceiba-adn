@@ -18,7 +18,7 @@ public class CreateRentUseCase {
 
 	public Long create(RentCommand command) {
 		return port.newRent(
-				Rent.withoutId(command.getClientId(), command.getComputerId(), command.getStart(), command.getEnd()));
+				Rent.withoutId(command.getClientId(), command.getComputerId(), command.getActive(), command.getStart(), command.getEnd()));
 	}
 
 }
