@@ -33,4 +33,17 @@ public class ClientPersistenceAdapterTest {
 
 		assertThat(c.getName()).isEqualTo("jose");
 	}
+
+	@Test
+	void updateClient() {
+		Client client = adapterUnderTest.getById(1L);
+
+		client = Client.withId(client.getId(), "jose", "703046");
+
+		adapterUnderTest.update(client);
+
+		Client c = adapterUnderTest.getById(client.getId());
+
+		assertThat(c.getName()).isEqualTo("jose");
+	}
 }

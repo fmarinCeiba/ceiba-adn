@@ -17,7 +17,7 @@ public class ClientServiceTest {
 	private final FindClientUseCase findClient = new FindClientUseCase(clientPort);
 
 	@Test
-	void getAnClient() {
+	void findAnClient() {
 		List<Client> clients = findClient.find(1L);
 
 		assertThat(clients).hasSize(1);

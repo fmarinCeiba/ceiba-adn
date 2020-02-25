@@ -34,7 +34,7 @@ public class ClientControllerTest {
 	private DeleteClientUseCase delCaseUnderTest;
 	
 	@Test
-	void testClient() throws Exception {
+	void findClientByController() throws Exception {
 		mockMvc.perform(get("http://localhost:8080/cafe-api/client/{clientId}", 1L)
 				.header("Content-Type", "application/json"))
 				.andExpect(status().isOk());

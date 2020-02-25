@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 public class ClientTest {
 
 	@Test
-	void newClient() {
+	void newDomainClient() {
 		Client client = new ClientBuilder()
 				.withClientId(1L)
 				.withName("jose")
