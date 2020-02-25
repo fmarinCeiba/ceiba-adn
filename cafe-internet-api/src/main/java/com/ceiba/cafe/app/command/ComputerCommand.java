@@ -13,22 +13,22 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class ComputerCommand extends SelfValidating<ComputerCommand> {
 
-	@NotNull
+	@NotNull(message = "computerId must not be null")
 	private Long computerId;
 
-	@NotNull
+	@NotNull(message = "statusId must not be null")
 	private Long statusId;
 
-	@NotNull
+	@NotNull(message = "categoryId must not be null")
 	private Long categoryId;
 
-	@NotNull
+	@NotNull(message = "ip must not be null")
 	private String ip;
 
-	@NotNull
+	@NotNull(message = "mac must not be null")
 	private String mac;
 
-	@NotNull
+	@NotNull(message = "location must not be null")
 	private String location;
 
 	public ComputerCommand(Long computerId, Long statusId, Long categoryId, String ip, String mac, String location) {

@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class ClientCommand extends SelfValidating<ClientCommand> {
 
-	@NotNull
+	@NotNull(message = "clientId must not be null")
 	private Long clientId;
 
-	@NotNull
+	@NotNull(message = "name must not be null")
 	private String name;
 
-	@NotNull
+	@NotNull(message = "identification must not be null")
 	private String identification;
 
 	public ClientCommand(Long clientId, String name, String identification) {

@@ -13,16 +13,16 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class CategoryCommand extends SelfValidating<CategoryCommand> {
 
-	@NotNull
+	@NotNull(message = "categoryId must not be null")
 	private Long categoryId;
 
-	@NotNull
+	@NotNull(message = "type must not be null")
 	private String type;
 
-	@NotNull
+	@NotNull(message = "amount must not be null")
 	private Long amount;
 
-	@NotNull
+	@NotNull(message = "time must not be null")
 	private Long time;
 
 	public CategoryCommand(Long categoryId, String type, Long amount, Long time) {
