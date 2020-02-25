@@ -32,6 +32,8 @@ public class RentJpaEntity {
 	@Column
 	private Long idComputer;
 	@Column
+	private Boolean active;
+	@Column
 	private LocalDateTime startTime;
 	@Column
 	private LocalDateTime endTime;

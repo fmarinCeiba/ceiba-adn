@@ -2,6 +2,8 @@ package com.ceiba.cafe.adapter.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +50,7 @@ public class RentController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Boolean> update(@RequestBody RentCommand rent) {
+	public ResponseEntity<Boolean> update(@Valid @RequestBody RentCommand rent) {
 		return new ResponseEntity<>(updRent.update(rent), HttpStatus.OK);
 	}
 

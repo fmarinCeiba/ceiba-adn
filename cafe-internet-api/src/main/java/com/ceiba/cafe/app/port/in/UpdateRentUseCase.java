@@ -22,7 +22,7 @@ public class UpdateRentUseCase {
 
 	public Boolean update(RentCommand command) {
 		try {
-			port.update(Rent.withId(command.getRentId(), command.getClientId(), command.getComputerId(),
+			port.update(Rent.withId(command.getRentId(), command.getClientId(), command.getComputerId(), command.getActive(),
 					command.getStart(), command.getEnd()));
 			return true;
 		} catch (Exception e) {

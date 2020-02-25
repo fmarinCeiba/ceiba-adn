@@ -10,14 +10,17 @@ public class Rent {
 
 	private Long computerId;
 
+	private Boolean active;
+
 	private LocalDateTime start;
 
 	private LocalDateTime end;
 
-	public Rent(Long rentId, Long clientId, Long computerId, LocalDateTime start, LocalDateTime end) {
+	public Rent(Long rentId, Long clientId, Long computerId, Boolean active, LocalDateTime start, LocalDateTime end) {
 		this.id = rentId;
 		this.clientId = clientId;
 		this.computerId = computerId;
+		this.active = active;
 		this.start = start;
 		this.end = end;
 	}
@@ -34,6 +37,10 @@ public class Rent {
 		return computerId;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
 	public LocalDateTime getStart() {
 		return start;
 	}
@@ -42,12 +49,12 @@ public class Rent {
 		return end;
 	}
 
-	public static Rent withId(Long rentId, Long clientId, Long computerId, LocalDateTime start, LocalDateTime end) {
-		return new Rent(rentId, clientId, computerId, start, end);
+	public static Rent withId(Long rentId, Long clientId, Long computerId, Boolean active, LocalDateTime start, LocalDateTime end) {
+		return new Rent(rentId, clientId, computerId, active, start, end);
 	}
 
-	public static Rent withoutId(Long clientId, Long computerId, LocalDateTime start, LocalDateTime end) {
-		return new Rent(null, clientId, computerId, start, end);
+	public static Rent withoutId(Long clientId, Long computerId, Boolean active, LocalDateTime start, LocalDateTime end) {
+		return new Rent(null, clientId, computerId, active, start, end);
 	}
 
 }

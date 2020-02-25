@@ -12,6 +12,7 @@ public class RentMapper {
 		return Rent.withId(rent.getId()
 				, rent.getIdClient()
 				, rent.getIdComputer()
+				, rent.getActive()
 				, rent.getStartTime()
 				, rent.getEndTime()
 			);
@@ -22,6 +23,7 @@ public class RentMapper {
 				rent.getId() == null? null : rent.getId()
 				, rent.getClientId()
 				, rent.getComputerId()
+				, rent.getActive()
 				, rent.getStart()
 				, rent.getEnd()
 			);
