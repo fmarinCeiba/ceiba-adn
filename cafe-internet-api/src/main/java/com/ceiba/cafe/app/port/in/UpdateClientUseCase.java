@@ -2,7 +2,6 @@ package com.ceiba.cafe.app.port.in;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.HibernateError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,7 @@ public class UpdateClientUseCase {
 		try {
 			port.update(Client.withId(command.getClientId(), command.getName(), command.getIdentification()));
 			return true;
-		} catch (HibernateError e) {
+		} catch (Exception e) {
 			LOG.error(e.getLocalizedMessage(), e);
 			return false;
 		}
