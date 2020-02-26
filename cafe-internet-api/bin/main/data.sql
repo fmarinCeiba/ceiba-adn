@@ -10,4 +10,4 @@ INSERT INTO category (TYPE, AMOUNT, TIME) VALUES ('full internet', 2500, 60);
 
 INSERT INTO client (NAME, IDENTIFICATION) VALUES ('francisco', '703045');
 
-INSERT INTO computer (ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES (1, 1, '192.168.100.10', 'fe80::e554:b521:ee60:e1c9%9', 'frente al servidor');
+INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('PC1', 1, 1, '192.168.100.10', 'fe80::e554:b521:ee60:e1c9%9', 'frente al servidor');

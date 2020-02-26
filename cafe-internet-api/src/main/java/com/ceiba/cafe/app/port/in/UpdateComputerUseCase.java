@@ -22,7 +22,7 @@ public class UpdateComputerUseCase {
 
 	public Boolean update(ComputerCommand command) {
 		try {
-			port.update(Computer.withId(command.getComputerId(), command.getStatusId(), command.getCategoryId(),
+			port.update(Computer.withId(command.getComputerId(), command.getName(), command.getStatusId(), command.getCategoryId(),
 					command.getIp(), command.getMac(), command.getLocation()));
 			return true;
 		} catch (Exception e) {

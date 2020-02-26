@@ -16,6 +16,9 @@ public class ComputerCommand extends SelfValidating<ComputerCommand> {
 	@NotNull(message = "computerId must not be null")
 	private Long computerId;
 
+	@NotNull(message = "name must not be null")
+	private String name;
+
 	@NotNull(message = "statusId must not be null")
 	private Long statusId;
 
@@ -31,8 +34,9 @@ public class ComputerCommand extends SelfValidating<ComputerCommand> {
 	@NotNull(message = "location must not be null")
 	private String location;
 
-	public ComputerCommand(Long computerId, Long statusId, Long categoryId, String ip, String mac, String location) {
+	public ComputerCommand(Long computerId, String name, Long statusId, Long categoryId, String ip, String mac, String location) {
 		this.computerId = computerId;
+		this.name = name;
 		this.statusId = statusId;
 		this.categoryId = categoryId;
 		this.ip = ip;

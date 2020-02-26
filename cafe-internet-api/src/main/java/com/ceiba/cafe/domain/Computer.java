@@ -3,6 +3,8 @@ package com.ceiba.cafe.domain;
 public class Computer {
 	private final Long id;
 
+	private final String name;
+
 	private final Long statusId;
 
 	private final Long categoryId;
@@ -13,8 +15,10 @@ public class Computer {
 
 	private final String location;
 
-	public Computer(Long computerId, Long statusId, Long categoryId, String ip, String mac, String location) {
+	public Computer(Long computerId, String name, Long statusId, Long categoryId, String ip, String mac,
+			String location) {
 		this.id = computerId;
+		this.name = name;
 		this.statusId = statusId;
 		this.categoryId = categoryId;
 		this.ip = ip;
@@ -24,6 +28,10 @@ public class Computer {
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public Long getStatusId() {
@@ -46,12 +54,13 @@ public class Computer {
 		return location;
 	}
 
-	public static Computer withId(Long computerId, Long statusId, Long categoryId, String ip, String mac,
+	public static Computer withId(Long computerId, String name, Long statusId, Long categoryId, String ip, String mac,
 			String location) {
-		return new Computer(computerId, statusId, categoryId, ip, mac, location);
+		return new Computer(computerId, name, statusId, categoryId, ip, mac, location);
 	}
 
-	public static Computer withoutId(Long statusId, Long categoryId, String ip, String mac, String location) {
-		return new Computer(null, statusId, categoryId, ip, mac, location);
+	public static Computer withoutId(String name, Long statusId, Long categoryId, String ip, String mac,
+			String location) {
+		return new Computer(null, name, statusId, categoryId, ip, mac, location);
 	}
 }

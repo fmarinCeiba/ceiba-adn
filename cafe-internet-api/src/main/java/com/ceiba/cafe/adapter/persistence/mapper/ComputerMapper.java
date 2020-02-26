@@ -10,6 +10,7 @@ public class ComputerMapper {
 
 	public Computer mapToDomainEntity(ComputerJpaEntity computer) {
 		return Computer.withId(computer.getId()
+				, computer.getName()
 				, computer.getIdStatus()
 				, computer.getIdCategory()
 				, computer.getIp()
@@ -21,6 +22,7 @@ public class ComputerMapper {
 	public ComputerJpaEntity mapToJpaEntity(Computer computer) {
 		return new ComputerJpaEntity(
 				computer.getId() == null? null : computer.getId()
+				, computer.getName()
 				, computer.getStatusId()
 				, computer.getCategoryId()
 				, computer.getIp()

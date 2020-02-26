@@ -26,6 +26,8 @@ public class ComputerJpaEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
+	private String name;
+	@Column
 	private Long idStatus;
 	@Column
 	private Long idCategory;
