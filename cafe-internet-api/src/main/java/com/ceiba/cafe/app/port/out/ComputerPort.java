@@ -15,4 +15,6 @@ public interface ComputerPort {
 	void update(Computer computer);
 
 	void delete(Long computerId);
+
+	List<Computer> getByStatusId(Long statusId);
 }

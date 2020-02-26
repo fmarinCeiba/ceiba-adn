@@ -9,5 +9,9 @@ INSERT INTO category (TYPE, AMOUNT, TIME) VALUES ('edicion', 3000, 60);
 INSERT INTO category (TYPE, AMOUNT, TIME) VALUES ('full internet', 2500, 60);
 
 INSERT INTO client (NAME, IDENTIFICATION) VALUES ('francisco', '703045');
+INSERT INTO client (NAME, IDENTIFICATION) VALUES ('jose', '300703045');
 
-INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('PC1', 1, 1, '192.168.100.10', 'fe80::e554:b521:ee60:e1c9%9', 'frente al servidor');
+INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('Normal1', 1, 1, '192.168.100.10', 'fe80::e554:b521:ee60:e1c9%9', 'frente al servidor');
+INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('Gamer1', 1, 2, '192.168.100.110', 'fe80::e554:b521:ee60:e1c9#9', 'cuarto 1');
+INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('Edicion1', 1, 3, '192.168.100.210', 'fe80::e554:b521:ee60:e1c9', 'cuarto 2');
+INSERT INTO computer (NAME, ID_STATUS, ID_CATEGORY, IP, MAC, LOCATION) VALUES ('Internet1', 1, 4, '192.168.100.310', 'fe80::e554:b521:ee60:e1c', 'cuarto 3');

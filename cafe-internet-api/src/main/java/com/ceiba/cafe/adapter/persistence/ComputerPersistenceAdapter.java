@@ -43,6 +43,14 @@ public class ComputerPersistenceAdapter implements ComputerPort {
 	}
 
 	@Override
+	public List<Computer> getByStatusId(Long statusId) {
+		List<ComputerJpaEntity> computers = repository.findByIdStatus(statusId);
+		List<Computer> resp = new ArrayList<>();
+		computers.forEach(c -> resp.add(mapper.mapToDomainEntity(c)));
+		return resp;
+	}
+
+	@Override
 	public void update(Computer computer) {
 		ComputerJpaEntity categoryJpa = mapper.mapToJpaEntity(computer);
 		repository.save(categoryJpa);

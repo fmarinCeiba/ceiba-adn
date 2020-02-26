@@ -42,9 +42,9 @@ public class ComputerController {
 		return new ResponseEntity<>(newComputer.create(computer), HttpStatus.CREATED);
 	}
 
-	@GetMapping("/{computerId}")
-	public ResponseEntity<List<Computer>> getComputer(@PathVariable("computerId") Long computerId) {
-		return new ResponseEntity<>(fndComputer.find(computerId), HttpStatus.OK);
+	@GetMapping("/{statusId}")
+	public ResponseEntity<List<Computer>> getComputer(@PathVariable("statusId") Long statusId) {
+		return new ResponseEntity<>(fndComputer.find(statusId), HttpStatus.OK);
 	}
 
 	@GetMapping

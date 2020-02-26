@@ -28,6 +28,13 @@ public class StatusPersistenceAdapter implements StatusPort {
 	}
 
 	@Override
+	public Status getByName(String name) {
+		StatusJpaEntity status = repository.findByDescription(name)
+				.orElseThrow(() -> new NotFoundStatusException(StatusPersistenceAdapter.NOT_FOUND_STATUS));
+		return mapper.mapToDomainEntity(status);
+	}
+
+	@Override
 	public List<Status> getList() {
 		List<StatusJpaEntity> statuses = repository.findAll();
 		List<Status> resp = new ArrayList<>();

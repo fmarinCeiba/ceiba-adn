@@ -18,12 +18,12 @@ public class FindComputerUseCase {
 
 	private final ComputerPort port;
 
-	public List<Computer> find(Long computerId) {
+	public List<Computer> find(Long statusId) {
 		List<Computer> resp = new ArrayList<>();
-		if (computerId == null) {
+		if (statusId == null) {
 			resp = port.getList();
 		} else {
-			resp.add(port.getById(computerId));
+			resp = port.getByStatusId(statusId);
 		}
 		return resp;
 	}
