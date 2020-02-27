@@ -53,4 +53,25 @@ public class RentControllerTest {
 		then(useCaseUnderTest).should().find(null);
 	}
 
+//	@Test
+//	void createRentByController() throws Exception {
+//		ObjectMapper mapper = new ObjectMapper();
+//		RentCommand rentCmd = new RentCommand(0L, 1L, 1L, true, LocalDateTime.now(), LocalDateTime.now());
+//
+//		mockMvc.perform(put("http://localhost:8080/cafe-api/rent/").content(mapper.writeValueAsString(rentCmd))
+//				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isCreated());
+//
+//		then(newUnderTest).should().create(rentCmd);
+//	}
+//
+//	@Test
+//	void updateRentByController() throws Exception {
+//		ObjectMapper mapper = new ObjectMapper();
+//		RentCommand rentCmd = new RentCommand(1L, 1L, 1L, true, LocalDateTime.now(), LocalDateTime.now());
+//
+//		mockMvc.perform(post("http://localhost:8080/cafe-api/rent/").content(mapper.writeValueAsString(rentCmd))
+//				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
+//
+//		then(updCaseUnderTest).should().update(rentCmd);
+//	}
 }
