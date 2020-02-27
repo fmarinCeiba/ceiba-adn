@@ -3,6 +3,7 @@ package com.ceiba.cafe.adapter.web;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -17,11 +18,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.ceiba.cafe.app.command.ComputerCommand;
 import com.ceiba.cafe.app.port.in.CreateComputerUseCase;
 import com.ceiba.cafe.app.port.in.DeleteComputerUseCase;
 import com.ceiba.cafe.app.port.in.FindComputerUseCase;
 import com.ceiba.cafe.app.port.in.UpdateComputerUseCase;
-import com.ceiba.cafe.domain.Computer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
@@ -60,10 +61,24 @@ public class ComputerControllerTest {
 	@Test
 	void createComputerByController() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		Computer computer = Computer.withoutId("Gamer1", 1L, 2L, "192.168.100.110", "fe80::e554:b521:ee60:e1c9#9",
-				"cuarto 1");
+		ComputerCommand computerCmd = new ComputerCommand(0L, "Gamer1", 1L, 2L, "192.168.100.110",
+				"fe80::e554:b521:ee60:e1c9#9", "cuarto 1");
 
-		mockMvc.perform(put("http://localhost:8080/cafe-api/computer/").content(mapper.writeValueAsString(computer))
+		mockMvc.perform(put("http://localhost:8080/cafe-api/computer/").content(mapper.writeValueAsString(computerCmd))
 				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isCreated());
+
+		then(newUnderTest).should().create(computerCmd);
+	}
+
+	@Test
+	void updateComputerByController() throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		ComputerCommand computerCmd = new ComputerCommand(1L, "Gamer1", 1L, 2L, "192.168.100.110",
+				"fe80::e554:b521:ee60:e1c9#9", "cuarto 1");
+
+		mockMvc.perform(post("http://localhost:8080/cafe-api/computer/").content(mapper.writeValueAsString(computerCmd))
+				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
+
+		then(updCaseUnderTest).should().update(computerCmd);
 	}
 }

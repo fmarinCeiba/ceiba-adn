@@ -52,4 +52,5 @@ public class RentControllerTest {
 
 		then(useCaseUnderTest).should().find(null);
 	}
+
 }

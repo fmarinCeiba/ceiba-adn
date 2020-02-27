@@ -3,6 +3,7 @@ package com.ceiba.cafe.adapter.web;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -17,11 +18,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.ceiba.cafe.app.command.ClientCommand;
 import com.ceiba.cafe.app.port.in.CreateClientUseCase;
 import com.ceiba.cafe.app.port.in.DeleteClientUseCase;
 import com.ceiba.cafe.app.port.in.FindClientUseCase;
 import com.ceiba.cafe.app.port.in.UpdateClientUseCase;
-import com.ceiba.cafe.domain.Client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
@@ -73,9 +74,22 @@ public class ClientControllerTest {
 	@Test
 	void createClientByController() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		Client client = Client.withoutId("francisco", "703045");
+		ClientCommand clientCmd = new ClientCommand(0L, "francisco", "703045");
 
-		mockMvc.perform(put("http://localhost:8080/cafe-api/client/").content(mapper.writeValueAsString(client))
+		mockMvc.perform(put("http://localhost:8080/cafe-api/client/").content(mapper.writeValueAsString(clientCmd))
 				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isCreated());
+
+		then(newUnderTest).should().create(clientCmd);
+	}
+
+	@Test
+	void updateClientByController() throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		ClientCommand clientCmd = new ClientCommand(1L, "francisco", "703045");
+
+		mockMvc.perform(post("http://localhost:8080/cafe-api/client/").content(mapper.writeValueAsString(clientCmd))
+				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
+
+		then(updCaseUnderTest).should().update(clientCmd);
 	}
 }
