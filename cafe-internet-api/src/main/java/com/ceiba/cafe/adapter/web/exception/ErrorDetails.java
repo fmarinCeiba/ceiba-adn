@@ -9,13 +9,13 @@ public class ErrorDetails {
 
 	public ErrorDetails(Date timestamp, String message, String details) {
 		super();
-		this.timestamp = timestamp;
+		this.timestamp = (Date) timestamp.clone();
 		this.message = message;
 		this.details = details;
 	}
 
 	public Date getTimestamp() {
-		return timestamp;
+		return (Date) timestamp.clone();
 	}
 
 	public String getMessage() {

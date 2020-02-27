@@ -3,6 +3,7 @@ package com.ceiba.cafe.adapter.web;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,6 +21,8 @@ import com.ceiba.cafe.app.port.in.CreateClientUseCase;
 import com.ceiba.cafe.app.port.in.DeleteClientUseCase;
 import com.ceiba.cafe.app.port.in.FindClientUseCase;
 import com.ceiba.cafe.app.port.in.UpdateClientUseCase;
+import com.ceiba.cafe.domain.Client;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = ClientController.class)
@@ -65,5 +68,14 @@ public class ClientControllerTest {
 				.andDo(print()).andExpect(status().isOk());
 
 		then(useCaseUnderTest).should().find(null);
+	}
+
+	@Test
+	void createClientByController() throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		Client client = Client.withoutId("francisco", "703045");
+
+		mockMvc.perform(put("http://localhost:8080/cafe-api/client/").content(mapper.writeValueAsString(client))
+				.contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isCreated());
 	}
 }
