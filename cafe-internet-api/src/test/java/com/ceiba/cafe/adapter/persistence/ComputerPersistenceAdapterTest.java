@@ -2,6 +2,8 @@ package com.ceiba.cafe.adapter.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,6 +23,14 @@ public class ComputerPersistenceAdapterTest {
 		Computer computer = adapterUnderTest.getById(1L);
 
 		assertThat(computer.getName()).isEqualTo("Normal1");
+	}
+
+	@Test
+	void getComputers() {
+		List<Computer> computers = adapterUnderTest.getList();
+
+		assertThat(computers).hasSize(8);
+		assertThat(computers.get(0).getName()).isEqualTo("Normal1");
 	}
 
 	@Test

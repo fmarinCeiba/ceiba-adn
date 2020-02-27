@@ -2,6 +2,8 @@ package com.ceiba.cafe.adapter.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,6 +23,14 @@ public class ClientPersistenceAdapterTest {
 		Client client = adapterUnderTest.getById(1L);
 
 		assertThat(client.getName()).isEqualTo("francisco");
+	}
+	
+	@Test
+	void getClients() {
+		List<Client> clients = adapterUnderTest.getList();
+
+		assertThat(clients).hasSize(4);
+		assertThat(clients.get(0).getName()).isEqualTo("francisco");
 	}
 
 	@Test
