@@ -3,6 +3,7 @@ package com.ceiba.cafe.adapter.web;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -20,6 +23,7 @@ import com.ceiba.cafe.app.port.in.UpdateClientUseCase;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = ClientController.class)
+@TestPropertySource(properties = { "spring.config.location = classpath:application-test.properties" })
 public class ClientControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
@@ -32,13 +36,34 @@ public class ClientControllerTest {
 	private UpdateClientUseCase updCaseUnderTest;
 	@MockBean
 	private DeleteClientUseCase delCaseUnderTest;
-	
+
+//	@Transactional
+//	@Rollback(true)
+//	@Test
+//	@SqlGroup({
+//			@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:integration/beforeclientsave.sql"),
+//			@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:integration/afterclientsave.sql") })
+//	public void getClientTest() throws Exception {
+//		mockMvc.perform(
+//				get("http://localhost:8080/cafe-api/client/{clientId}", 1L).contentType(MediaType.APPLICATION_JSON))
+//				.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("name", equalTo("francisco")))
+//				.andExpect(jsonPath("identification", equalTo("703045")));
+//	}
+
 	@Test
 	void findClientByController() throws Exception {
-		mockMvc.perform(get("http://localhost:8080/cafe-api/client/{clientId}", 1L)
-				.header("Content-Type", "application/json"))
-				.andExpect(status().isOk());
+		mockMvc.perform(
+				get("http://localhost:8080/cafe-api/client/{clientId}", 1L).contentType(MediaType.APPLICATION_JSON))
+				.andDo(print()).andExpect(status().isOk());
 
 		then(useCaseUnderTest).should().find(eq(new Long(1L)));
+	}
+
+	@Test
+	void findAllClientByController() throws Exception {
+		mockMvc.perform(get("http://localhost:8080/cafe-api/client/").contentType(MediaType.APPLICATION_JSON))
+				.andDo(print()).andExpect(status().isOk());
+
+		then(useCaseUnderTest).should().find(null);
 	}
 }

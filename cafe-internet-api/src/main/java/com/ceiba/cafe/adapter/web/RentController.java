@@ -67,9 +67,4 @@ public class RentController {
 			@PathVariable("time") Long time) {
 		return new ResponseEntity<>(calRent.amount(computerId, time), HttpStatus.OK);
 	}
-//
-//	@GetMapping("/verify")
-//	public ResponseEntity<Long> verify() {
-//		return new ResponseEntity<>(null, HttpStatus.OK);
-//	}
 }
