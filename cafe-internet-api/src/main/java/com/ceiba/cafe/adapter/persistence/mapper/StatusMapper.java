@@ -12,9 +12,4 @@ public class StatusMapper {
 		return Status.withId(status.getId(), status.getDescription());
 	}
 
-	public StatusJpaEntity mapToJpaEntity(Status status) {
-		return new StatusJpaEntity(
-				status.getId() == null? null : status.getId(), 
-				status.getDescription());
-	}
 }
